@@ -2,7 +2,7 @@ import { Worker } from "./types";
 import logger from "lib/logger";
 import sleep from "lib/sleep";
 
-const defaultInterval = 1000 * 60; // 1 minutes
+const defaultInterval = 1000 *30; // 1 minutes
 
 export default async function initWorkers(
   workers: Worker[],

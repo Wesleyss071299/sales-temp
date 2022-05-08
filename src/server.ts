@@ -16,16 +16,21 @@ import logger from "lib/logger";
 import { newNotifierFactory } from "lib/notifier";
 import initTwitterClient from "lib/twitter";
 import queue from "queue";
+import mongoose from "mongoose";
+import Customer from "schemas/Customer";
+
 
 (async () => {
   try {
+    
     const result = dotenv.config();
     if (result.error) {
       throw result.error;
     }
-
+    
+    await mongoose.connect(process.env.MONGO_URL as string);
     const config = loadConfig(process.env as Env);
-    const {subscriptions} = config;
+    const subscriptions = await Customer.find({ type: "NFTSale" });
     const port = process.env.PORT || 4000;
 
     const web3Conn = newConnection();

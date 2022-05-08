@@ -35,7 +35,7 @@ export async function fetchWeb3Transactions(
 
   if (signatures) {
     const txs: ParsedConfirmedTransaction[] = [];
-    const oldestToLatest = signatures.reverse();
+    const oldestToLatest = signatures 
 
     for (let i = 0; i < oldestToLatest.length; i++) {
       const signature = oldestToLatest[i];

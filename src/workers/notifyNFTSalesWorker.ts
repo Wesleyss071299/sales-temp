@@ -60,20 +60,19 @@ export default function newWorker(
         until: getSignatureFromTx(latestParsedTx),
         async onTransaction(tx) {
           latestParsedTx = tx;
-
           const txCreatedAt = new Date((tx.blockTime || 0) * 1000);
           if (notifyAfter > txCreatedAt) {
             return;
           }
-
+          
           const nftSale = await parseNFTSale(web3Conn, tx);
           if (!nftSale) {
             return;
           }
-
+          
           // Don't notify if transaction was previously notified.
           if (latestNotifications.alreadyNotified(nftSale.transaction)) {
-            logger.warn(`Duplicate tx ignored: ${nftSale.transaction}`);
+            // logger.warn(`Duplicate tx ignored: ${nftSale.transaction}`);
             return;
           }
 

@@ -74,7 +74,7 @@ export function loadConfig(env: Env): MutableConfig {
       accessSecret: env.TWITTER_ACCESS_TOKEN_SECRET || "",
     },
     discordBotToken: env.DISCORD_BOT_TOKEN || "",
-    queueConcurrency: parseInt(env.QUEUE_CONCURRENCY || "2", 10),
+    queueConcurrency: 15  ,
     subscriptions: loadSubscriptions(env),
   };
 

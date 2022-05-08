@@ -57,11 +57,11 @@ export async function newNotifierFactory(config: Config, nQueue: queue) {
           });
         }
 
-        if (twitterClient) {
-          queueNotification(nQueue, Platform.Twitter, async () => {
-            await notifyTwitter(twitterClient, data);
-          });
-        }
+        // if (twitterClient) {
+        //   queueNotification(nQueue, Platform.Twitter, async () => {
+        //     await notifyTwitter(twitterClient, data);
+        //   });
+        // }
       }
 
       return {
